@@ -3,21 +3,21 @@
 ## Inputs:
 
 - Household Energy
- - Electricity
- - Gas
+  - Electricity
+  - Gas
 
 - Transportation
- - Efficiency of Car
- - Fuel Usage
- - Carbon Emissions per unit of fuel
- - Flights
+  - Efficiency of Car
+  - Fuel Usage
+  - Carbon Emissions per unit of fuel
+  - Flights
 
 - Food
- - Vegetarian
- - Non-Vegetarian
- - Meals per day 
- - Imported food
- - Carbon released in manufacturing/packaging/delivery of items
+  - Vegetarian
+  - Non-Vegetarian
+  - Meals per day 
+  - Imported food
+  - Carbon released in manufacturing/packaging/delivery of items
 
 ## Calculations:
 
