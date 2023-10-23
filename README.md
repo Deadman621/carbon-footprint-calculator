@@ -6,6 +6,7 @@
     - [Overview](https://www.ibm.com/docs/en/tririga/11.5?topic=impact-carbon-footprint-calculations)
     - [Calculation Process](https://www.ibm.com/docs/en/tririga/11.5?topic=calculations-carbon-process)
     - [Calculation Formulas](https://www.ibm.com/docs/en/tririga/11.5?topic=calculations-carbon-footprint-calculation-formulas)
+- [Carbon Independent](https://www.carbonindependent.org/)
 
 
 ### Potential Graphing Libraries:
