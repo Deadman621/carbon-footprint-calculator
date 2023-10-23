@@ -6,3 +6,8 @@
     - [Overview](https://www.ibm.com/docs/en/tririga/11.5?topic=impact-carbon-footprint-calculations)
     - [Calculation Process](https://www.ibm.com/docs/en/tririga/11.5?topic=calculations-carbon-process)
     - [Calculation Formulas](https://www.ibm.com/docs/en/tririga/11.5?topic=calculations-carbon-footprint-calculation-formulas)
+
+
+### Potential Graphing Libraries:
+- [GNUPlot](https://github.com/mithodin/gnuplot_i)
+- [CGLib](https://github.com/fullnitrous/CGLib/blob/master/svg-out/pie.svg) 
