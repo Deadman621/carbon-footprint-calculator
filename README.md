@@ -12,9 +12,9 @@
 - [GNUPlot](https://github.com/mithodin/gnuplot_i)
 - [CGLib](https://github.com/fullnitrous/CGLib/blob/master/svg-out/pie.svg) 
 
-# Development Outline:
+## Development Outline:
 
-## Inputs:
+### Inputs:
 
 - Household Energy
   - Electricity
@@ -33,4 +33,17 @@
   - Imported food
   - Carbon released in manufacturing/packaging/delivery of items
 
-## Calculations:
+### Calculations:
+
+
+### Output:
+
+- Display overall Carbon Footprint on yearly basis
+- Comparision from average footprint
+- Contribution factor from each category
+- Data Visualization
+- Suggestions
+
+### Extra:
+
+- Comparision from previous data (includes Data visualization)
