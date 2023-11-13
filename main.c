@@ -15,12 +15,12 @@ void EnergyInput(int energy_type[]);
 int main(void) {
 
 // Variables to be used for Calculations:
-    int total_electricity_units, total_gas_units, vehicle_total, flights;
+    int total_electricity_units, total_gas_units, vehicle_total, flights, organic_food_percentage, inorganic_food_percentage, vegetarian_food_percentage, locally_produced_food;
 // Calculate and print only if above values are not zero.
 
 // Variables for Storing Data (Not to be used for Calcultions)
 
-    int number_of_vehicles, vehicle_total, flights_y_n;
+    int number_of_vehicles, flights_y_n;
     int electricity_units[12], gas_units[12];
 
     printf("\nCARBON FOOTPRINT CALCULATOR\n");
@@ -65,6 +65,22 @@ int main(void) {
         DataValidationInteger("Number of Flights Taken", flights);
     }
     else printf("Skipping Over Flight Calculation.");
+
+// Input for Food
+
+    printf("\nTRANSPORTATION:\n");
+
+    printf("\nHow much percent of your food is Organic on Monthly basis (approx.)?: ");
+    DataValidationInteger("Percentage of Organic Food Consumed", organic_food_percentage);
+
+    puts("");
+    printf("How much percent of your food is vegetarian on Monthly basis (approx.)?: ");
+    DataValidationInteger("Percentage of Veggies Consumed", inorganic_food_percentage);
+
+    puts("");
+    printf("How much percent of your food is prepared locally (approx.)?: ");
+    DataValidationInteger("Percentage of Locally Produced Food", locally_produced_food);
+    puts("");
 
     return 0;
 }
