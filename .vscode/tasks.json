@@ -13,9 +13,7 @@
                 "-I../src/",
                 "${fileDirname}\\CGLib\\src\\*.c",
                 "${fileDirname}\\CGLib\\bin\\static\\libcglib.a",
-                "${fileDirname}\\input.c"
-                "${fileDirname}\\recommendation Generator.c",
-                "${fileDirname}\\calculation.c"
+                "${fileDirname}\\components\\*.c"
             ],
             "options": {
                 "cwd": "${fileDirname}"

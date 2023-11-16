@@ -83,8 +83,3 @@ void print(const char **recommendations,const char **suggestion ){
     index1(recommendations, suggestion, CarbonValue , avg_emission, transporation_value , diet_value, resource_value);
 
 }
-
-
-
-
-
