@@ -2,23 +2,10 @@
 #include<stdlib.h>
 #include<time.h>
 
-float HouseholdEmission(int total_electricity_unites, int total_gas_unites);
-
-float TransportEnergy(float vehicle_total, int flight);
-
-float Foodemission(float organic_food_percentage, float inorganic_food_percentage, float locally_produced_food);
- 
-
-
-
 // function to generate random indexes
 int getRandomIndex(int start, int end) {
     return (rand() % (end - start + 1) + start);
 }
-
-
-
-
 
 /*function that takes arguments and after evaluating prints the suitable statement accordingly*/
 void index1(const char **recommendations,const char **suggestion, float CarbonValue, double avg_emission,float transporation_value,float diet_value,float resource_value) {
@@ -52,34 +39,16 @@ void index1(const char **recommendations,const char **suggestion, float CarbonVa
     return ;
 }
 
-
-void print(const char **recommendations,const char **suggestion ){
+void print(const char **recommendations, const char **suggestion ){
     
-        float vehicle_total = 1221.10,
-              organic_food_percentage = 560.356,
-              inorganic_food_percentage = 789.12, 
-              locally_produced_food = 145.36;    
-              
-                      // Just assuming values 
-        int flight = 13 ,
-            total_electricity_unites = 612 ,
-            total_gas_unites = 320;
-
-    double avg_emission=3991.6129 ;             //Avg carbon emission by a person yearly
-
-    float transporation_value = TransportEnergy(vehicle_total ,flight),
-          diet_value = Foodemission( organic_food_percentage, inorganic_food_percentage, locally_produced_food), 
-          resource_value = HouseholdEmission( total_electricity_unites, total_gas_unites);    
-
-    float CarbonValue = transporation_value + diet_value + resource_value ;
-
-    printf("\nThe Carbon Emission From the Transporation sector is : %0.2f\n",transporation_value);                  //value of carbon produced by transport
-    printf("\nThe contribution of Diet in Carbon Emission is : %0.2f\n",diet_value);                                 //value of carbon produced by food
-    printf("\nThe amount of Carbon produced due to Consumption of Natural Resources is : %0.2f\n",resource_value);   //value of carbon produced by natural resource
-
-    printf("\nThe Total Value of Carbon Emitted is : %0.2f\n",CarbonValue);                 //Total amount of carbon produced 
-
-
-    index1(recommendations, suggestion, CarbonValue , avg_emission, transporation_value , diet_value, resource_value);
+    float vehicle_total = 1221.10,
+        organic_food_percentage = 560.356,
+        inorganic_food_percentage = 789.12, 
+        locally_produced_food = 145.36;    
+            
+                    // Just assuming values 
+    int flight = 13 ,
+        total_electricity_unites = 612 ,
+        total_gas_unites = 320;
 
 }

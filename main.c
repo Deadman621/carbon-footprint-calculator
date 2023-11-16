@@ -6,20 +6,22 @@
 #include"CGLib/src/cglib.h"
 #include"CGLib/src/cglib-other.h"
 
-
 int SumArrayInt(int n, int arr[]);
 int SumArrayFloat(int n, float arr[]);
 int DataValidationInteger(char str[], int  variable);
 int getRandomIndex(int start, int end);
 int yes_no(char variable);
 int VehicleIO(float arr[][2], float product[], int number_of_vehicles);
+void EnergyInput(int energy_type[]);
+void print(const char **recommendations, const char **suggestion);
+void index1(const char **recommendations, const char **suggestion, float CarbonValue, double avg_emission, float transporation_value, float diet_value, float resource_value);
 float DataValidationFloat(char str[], float  variable);
 float HouseholdEmission(int total_electricity_unites, int total_gas_unites);
 float TransportEnergy(float vehicle_total, int flight);
 float Foodemission(float organic_food_percentage, float inorganic_food_percentage, float locally_produced_food);
-void EnergyInput(int energy_type[]);
-void print(const char **recommendations, const char **suggestion);
-void index1(const char **recommendations, const char **suggestion, float CarbonValue, double avg_emission, float transporation_value, float diet_value, float resource_value);
+float HouseholdEmission(int total_electricity_unites, int total_gas_unites);
+float TransportEnergy(float vehicle_total, int flight);
+float Foodemission(float organic_food_percentage, float inorganic_food_percentage, float locally_produced_food);
 
 int main(void) {
   
@@ -38,39 +40,38 @@ int main(void) {
     int electricity_units[12], gas_units[12];
 
     const char *recommendations[] = {
-         "Kudos! Your carbon footprint is impressively below average. Your commitment to sustainability is truly making a difference. Keep up the excellent work!",
- 		 "Fantastic job! Your carbon emissions are shining examples of responsible living. Your choices are not just commendable; they're inspirational. Keep paving the way for a greener world!",
-		 "Bravo! Your carbon footprint is shining brightly below the average. Your eco-conscious decisions are like green beacons lighting the way. Keep up the stellar work!",
-		 "Well done! Your carbon emissions are impressively low, showcasing a dedication to a sustainable lifestyle. Your choices aren't just reducing your footprint; they're creating ripples of positive change.",
-		 "Congratulations! Your carbon footprint is below average. Your conscious choices are making a positive impact. Keep it up!",
-		 
-		 "Being conscious of your carbon emissions is a vital step towards a sustainable lifestyle. Your efforts are commendable. To amplify your impact, pinpoint areas where small changes can lead to a greener living.",
-		 "Awareness is the first step, and you're there! Your commitment to understanding your carbon footprint is praiseworthy. Consider incorporating specific changes in your routine to enhance your eco-friendly journey.",
-		 "Being aware of your carbon emissions is a crucial step towards a sustainable lifestyle. Your dedication is praiseworthy. To amplify your impact, identify specific changes in your routine that can lead to a greener living.",
-   		 "Congratulations on understanding your carbon footprint! Your commitment to awareness is commendable. Consider incorporating targeted changes in your routine to enhance your eco-friendly journey.",
-		 "You're aware of your carbon emissions, and that's a positive step. To make an even greater impact, look into specific areas where small changes can lead to a greener lifestyle.",
-		 
-		 
-		 "Your carbon footprint is higher than the average, raising some environmental concerns. Let's work together to tackle this. Small changes can lead to a significant reduction. Are you ready to make a positive change?",
-		 "It looks like there's room for improvement in lowering your carbon emissions. No worries, though! Making sustainable choices can be a rewarding journey. Ready to explore some impactful changes in your lifestyle?",
-		 "Your carbon footprint is higher than the average, raising environmental concerns. Let's work together to address this. Small changes can result in a significant reduction. Are you ready to make a positive change?",
-		 "There's room for improvement in lowering your carbon emissions. No worries, though! Making sustainable choices can be a rewarding journey. Ready to explore impactful changes in your lifestyle?",
-		 "Your carbon footprint is higher than the average. Let's work together to reduce it. Small changes can make a big difference."
-
+        "Kudos! Your carbon footprint is impressively below average. Your commitment to sustainability is truly making a difference. Keep up the excellent work!",
+        "Fantastic job! Your carbon emissions are shining examples of responsible living. Your choices are not just commendable; they're inspirational. Keep paving the way for a greener world!",
+        "Bravo! Your carbon footprint is shining brightly below the average. Your eco-conscious decisions are like green beacons lighting the way. Keep up the stellar work!",
+        "Well done! Your carbon emissions are impressively low, showcasing a dedication to a sustainable lifestyle. Your choices aren't just reducing your footprint; they're creating ripples of positive change.",
+        "Congratulations! Your carbon footprint is below average. Your conscious choices are making a positive impact. Keep it up!",
+        
+        "Being conscious of your carbon emissions is a vital step towards a sustainable lifestyle. Your efforts are commendable. To amplify your impact, pinpoint areas where small changes can lead to a greener living.",
+        "Awareness is the first step, and you're there! Your commitment to understanding your carbon footprint is praiseworthy. Consider incorporating specific changes in your routine to enhance your eco-friendly journey.",
+        "Being aware of your carbon emissions is a crucial step towards a sustainable lifestyle. Your dedication is praiseworthy. To amplify your impact, identify specific changes in your routine that can lead to a greener living.",
+        "Congratulations on understanding your carbon footprint! Your commitment to awareness is commendable. Consider incorporating targeted changes in your routine to enhance your eco-friendly journey.",
+        "You're aware of your carbon emissions, and that's a positive step. To make an even greater impact, look into specific areas where small changes can lead to a greener lifestyle.",
+        
+        
+        "Your carbon footprint is higher than the average, raising some environmental concerns. Let's work together to tackle this. Small changes can lead to a significant reduction. Are you ready to make a positive change?",
+        "It looks like there's room for improvement in lowering your carbon emissions. No worries, though! Making sustainable choices can be a rewarding journey. Ready to explore some impactful changes in your lifestyle?",
+        "Your carbon footprint is higher than the average, raising environmental concerns. Let's work together to address this. Small changes can result in a significant reduction. Are you ready to make a positive change?",
+        "There's room for improvement in lowering your carbon emissions. No worries, though! Making sustainable choices can be a rewarding journey. Ready to explore impactful changes in your lifestyle?",
+        "Your carbon footprint is higher than the average. Let's work together to reduce it. Small changes can make a big difference."
     };
 
     const char *suggestion[] = {
-                    "Explore alternative transportation options like carpooling, biking, or using public transit to reduce your carbon footprint.",
-                    "If feasible, consider switching to an electric vehicle (EV) or a hybrid. EVs produce fewer emissions compared to traditional gasoline-powered vehicles and can be a cleaner transportation option.",
-                    "Adopt fuel-efficient driving habits, such as maintaining a steady speed, avoiding rapid acceleration and braking, and keeping your vehicle well-maintained. Regular maintenance, such as proper tire inflation, can improve fuel efficiency.",
+        "Explore alternative transportation options like carpooling, biking, or using public transit to reduce your carbon footprint.",
+        "If feasible, consider switching to an electric vehicle (EV) or a hybrid. EVs produce fewer emissions compared to traditional gasoline-powered vehicles and can be a cleaner transportation option.",
+        "Adopt fuel-efficient driving habits, such as maintaining a steady speed, avoiding rapid acceleration and braking, and keeping your vehicle well-maintained. Regular maintenance, such as proper tire inflation, can improve fuel efficiency.",
 
-                    "Consider adopting a more plant-based diet. Reducing meat consumption can significantly lower your environmental impact.",
-                    "Explore meat alternatives such as veggie burgers, plant-based sausages, and meat substitutes made from ingredients like soy, mushrooms, or legumes. These options can provide the taste and texture of meat with a smaller environmental footprint.",
-                    "Select locally grown fruits and vegetables to support local farmers and reduce the carbon footprint associated with transportation. Local, seasonal produce often requires less energy to produce and transport.",
+        "Consider adopting a more plant-based diet. Reducing meat consumption can significantly lower your environmental impact.",
+        "Explore meat alternatives such as veggie burgers, plant-based sausages, and meat substitutes made from ingredients like soy, mushrooms, or legumes. These options can provide the taste and texture of meat with a smaller environmental footprint.",
+        "Select locally grown fruits and vegetables to support local farmers and reduce the carbon footprint associated with transportation. Local, seasonal produce often requires less energy to produce and transport.",
 
-                    "Practice energy-saving habits: turn off lights, unplug devices, and use energy-efficient appliances.",
-                    "Look into renewable energy sources for your home. Switching to clean energy can contribute to a sustainable future.",
-                    "Get involved in local environmental initiatives or volunteer for green projects. Your actions can have a positive impact on the community."
+        "Practice energy-saving habits: turn off lights, unplug devices, and use energy-efficient appliances.",
+        "Look into renewable energy sources for your home. Switching to clean energy can contribute to a sustainable future.",
+        "Get involved in local environmental initiatives or volunteer for green projects. Your actions can have a positive impact on the community."
 
     };
 
@@ -118,7 +119,6 @@ int main(void) {
     }
     else printf("Skipping Over Flight Calculation.");
 
-
 // Input for Food
 
     puts("");
@@ -132,7 +132,29 @@ int main(void) {
     DataValidationFloat("Percentage of Locally Produced Food", locally_produced_food);
     puts("");
      
-    print(recommendations,suggestion);
+// Avg carbon emission by a person yearly
+
+    double avg_emission= 3991.6129; 
+    float transporation_value = TransportEnergy(vehicle_total, flights), diet_value = Foodemission(organic_food_percentage, inorganic_food_percentage, locally_produced_food), resource_value = HouseholdEmission(total_electricity_units, total_gas_units);    
+    float CarbonValue = transporation_value + diet_value + resource_value ;
+
+// value of carbon produced by transport
+
+    printf("\nThe Carbon Emission From the Transporation sector: %0.2f\n",transporation_value);                 
+
+// value of carbon produced by food
+
+    printf("\nThe contribution of Diet in Carbon Emission: %0.2f\n",diet_value);                              
+
+// value of carbon produced by natural resource    
+
+    printf("\nThe amount of Carbon produced due to Consumption of Natural Resources: %0.2f\n",resource_value);
+
+// Total amount of carbon produced 
+
+    printf("\nThe Total Value of Carbon Emitted is : %0.2f\n",CarbonValue);                           
+
+    index1(recommendations, suggestion, CarbonValue , avg_emission, transporation_value , diet_value, resource_value);
   
   return 0;
 }
