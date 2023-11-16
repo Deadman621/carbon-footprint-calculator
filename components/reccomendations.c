@@ -30,25 +30,13 @@ void index1(const char **recommendations,const char **suggestion, float CarbonVa
         R_index = getRandomIndex(5, 9);
     }
 
-    printf("\n\n%s\n", recommendations[R_index]);
+    printf("\nREMARKS:\n");
+    printf("\n%s\n", recommendations[R_index]);
 
     if (S_index != -1) {
-                 printf("\n\n%s\n", suggestion[S_index]);
+                printf("\nSUGGESTION:\n");
+                printf("\n%s\n", suggestion[S_index]);
     }
 
     return ;
-}
-
-void print(const char **recommendations, const char **suggestion ){
-    
-    float vehicle_total = 1221.10,
-        organic_food_percentage = 560.356,
-        inorganic_food_percentage = 789.12, 
-        locally_produced_food = 145.36;    
-            
-                    // Just assuming values 
-    int flight = 13 ,
-        total_electricity_unites = 612 ,
-        total_gas_unites = 320;
-
 }

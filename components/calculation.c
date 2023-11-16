@@ -6,7 +6,6 @@ float HouseholdEmission(int total_electricity_unites, int total_gas_unites){
     float Grate = 0.203;   //Co2 released (in kg) per kwh
 
     return ((total_electricity_unites * Erate) + ((total_gas_unites*Gtokwh) * Grate));
-
 }
 
 float TransportEnergy(float vehicle_total, int flight){
@@ -14,7 +13,6 @@ float TransportEnergy(float vehicle_total, int flight){
     float Frate = 250.0;   //Co2 released (in kg) per hours of flight
 
     return ((vehicle_total * Vrate) + (flight * Frate));
-
 }
 
 float Foodemission(float organic_food_percentage, float inorganic_food_percentage, float locally_produced_food){
@@ -23,9 +21,11 @@ float Foodemission(float organic_food_percentage, float inorganic_food_percentag
     float Irate = 0.8;   //Co2 released (in kg) for 1 kg of inorganic food
     float Lrate = 0.5;   //Co2 released (in kg) for 1 kg of locally produced food
 
-    float OrganicConsumption = avgConsumption * organic_food_percentage / 100;
-    float InorganicConsumption = avgConsumption * inorganic_food_percentage / 100;
-    float LocalConsumption = avgConsumption * locally_produced_food / 100;
+    float total = organic_food_percentage + inorganic_food_percentage; 
 
-    return ((OrganicConsumption * Orate)+(InorganicConsumption * Irate)+(LocalConsumption * Lrate));
+    float OrganicConsumption = (organic_food_percentage * avgConsumption) / total;
+    float InorganicConsumption = (inorganic_food_percentage * avgConsumption) / total;
+    float LocalConsumption = (locally_produced_food * avgConsumption) / total;
+
+    return ((OrganicConsumption * Orate)+(InorganicConsumption * Irate)+(LocalConsumption * Lrate)) * 12;
 }
