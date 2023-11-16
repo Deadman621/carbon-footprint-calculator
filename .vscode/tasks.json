@@ -12,7 +12,8 @@
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "-I../src/",
                 "${fileDirname}\\CGLib\\src\\*.c",
-                "${fileDirname}\\CGLib\\bin\\static\\libcglib.a"
+                "${fileDirname}\\CGLib\\bin\\static\\libcglib.a",
+                "${fileDirname}\\*.c"
             ],
             "options": {
                 "cwd": "${fileDirname}"

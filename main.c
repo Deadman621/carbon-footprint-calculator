@@ -7,13 +7,20 @@
 #include"CGLib/src/cglib-other.h"
 
 
+
+void print(const char **recommendations, const char **suggestion);
+void index1(const char **recommendations, const char **suggestion, float CarbonValue, double avg_emission, float transporation_value, float diet_value, float resource_value);
 int getRandomIndex(int start, int end);
+float HouseholdEmission(int total_electricity_unites, int total_gas_unites);
+float TransportEnergy(float vehicle_total, int flight);
+float Foodemission(float organic_food_percentage, float inorganic_food_percentage, float locally_produced_food);
 
-
-void index1(const char **recommendations,const char **suggestion, double CarbonValue, double avg_emission,float transporation_value,float diet_value,float resource_value);
 
 
 int main(void) {
+
+    srand(time(NULL));
+
     const char *recommendations[] = {
          "Kudos! Your carbon footprint is impressively below average. Your commitment to sustainability is truly making a difference. Keep up the excellent work!",
  		 "Fantastic job! Your carbon emissions are shining examples of responsible living. Your choices are not just commendable; they're inspirational. Keep paving the way for a greener world!",
@@ -52,56 +59,10 @@ int main(void) {
 
     };
 
-    srand(time(NULL));
-
-    double avg_emission=3991.6129 ;
-    float transporation_value = 1200.12, diet_value = 4221.24, resource_value = 2321.2548;
-    double CarbonValue = transporation_value + diet_value + resource_value ;
-
-
-    index1(recommendations, suggestion, CarbonValue , avg_emission, transporation_value , diet_value, resource_value);
-
+    
+    print(recommendations,suggestion);
+   
     return 0;
+
 }
-
-// function to generate random indexes
-int getRandomIndex(int start, int end) {
-    return (rand() % (end - start + 1) + start);
-}
-
-/*function that takes arguments and after evaluating prints the suitable statement accordingly*/
-void index1(const char **recommendations,const char **suggestion, double CarbonValue, double avg_emission,float transporation_value,float diet_value,float resource_value) {
-    int R_index,S_index=-1;
-    double thresholdless=avg_emission-300,thresholdabove=avg_emission+300;//define range so that it become applicable in real world
-
-    if (CarbonValue < thresholdless) {
-        R_index  = getRandomIndex(0, 4);
-    } else if (CarbonValue > thresholdabove) {
-
-        // printf("Transportation: %.2f, Diet: %.2f, Resource: %.2f\n", transporation_value, diet_value, resource_value);
-        R_index = getRandomIndex(10, 14);
-        if(transporation_value > diet_value && transporation_value > resource_value){
-           S_index = getRandomIndex(0,2);
-        }else if(diet_value > transporation_value && diet_value > resource_value){
-           S_index = getRandomIndex(3,5);
-        }else if(resource_value > transporation_value && resource_value > diet_value){
-           S_index = getRandomIndex(6,8);
-        }
-
-    } else {
-        R_index = getRandomIndex(5, 9);
-    }
-
-    printf("\n\n%s\n", recommendations[R_index]);
-
-    if (S_index != -1) {
-                 printf("\n\n%s\n", suggestion[S_index]);
-    }
-
-    return ;
-}
-
-
-
-
 
