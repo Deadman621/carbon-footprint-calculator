@@ -15,6 +15,8 @@ int yes_no(char variable);
 int CurrentWorkingDirectory(char cwd[]);
 void EnergyInput(int energy_type[]);
 void index1(const char **recommendations, const char **suggestion, float CarbonValue, double avg_emission, float transporation_value, float diet_value, float resource_value);
+int compare(float *previous_total, float current_total) ;
+void store(float Total);
 float VehicleIO(float arr[][2], int number_of_vehicles);
 float DataValidationFloat(char str[], float  variable);
 float HouseholdEmission(int total_electricity_unites, int total_gas_unites);
