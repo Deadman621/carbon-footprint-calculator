@@ -93,7 +93,7 @@ void store(float Total){                        //SAAD FUNCTION
 
  int compare(float *previous_total, float current_total) {
 
-    printf("\n\nCOMPARISION FROM THE PREVIOUS FOOTPRINT :\n\n");
+    printf("\nCOMPARISION FROM THE PREVIOUS FOOTPRINT:\n\n");
 
     FILE *fptr = fopen("Data Base File.txt", "r");
 
@@ -121,13 +121,15 @@ void store(float Total){                        //SAAD FUNCTION
     }
 
     // Compare the previous value with the current one
+
+    float percent = (current_total / *(previous_total));
     if (*previous_total > current_total) {
 
-        printf("Congratulations! You have improved from the previous total which is %f KG.\n",*previous_total);
+        printf("Your Carbon Footprint Has By Decreased %.2f%c\n", percent, '%');
 
     } else if (*previous_total < current_total) {
 
-        printf("There's room for improvement.!\nYour carbon emissions have increased. You should work to make more eco-friendly choices and stick to your previous routine!\n");
+        printf("Your Carbon Footprint Has By Increased %.2f%c\n", percent, '%');
 
 
     } else {

@@ -50,12 +50,12 @@ int DataValidationInteger(char str[], int  variable) {
 
 float DataValidationFloat(char str[], float variable) {
     int valid;
-    valid = scanf("%f", &variable);
+    valid = scanf(" %f", &variable);
     if (valid != 1 || variable < 0) {
         while(valid != 1 || variable < 0) {
             while ((getchar()) != '\n');
             printf("Invalid Input! Renter Value for %s: ", str);
-            valid = scanf("%f", &variable);
+            valid = scanf(" %f", &variable);
             if (variable < 0)
                 valid = 2;
         }

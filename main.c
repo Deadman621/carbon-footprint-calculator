@@ -13,9 +13,10 @@ int DataValidationInteger(char str[], int  variable);
 int getRandomIndex(int start, int end);
 int yes_no(char variable);
 int CurrentWorkingDirectory(char cwd[]);
+int compare(float *previous_total, float current_total);
+int retrive(float total[], int *QtyRequested);
 void EnergyInput(int energy_type[]);
 void index1(const char **recommendations, const char **suggestion, float CarbonValue, double avg_emission, float transporation_value, float diet_value, float resource_value);
-int compare(float *previous_total, float current_total) ;
 void store(float Total);
 float VehicleIO(float arr[][2], int number_of_vehicles);
 float DataValidationFloat(char str[], float  variable);
@@ -111,10 +112,10 @@ int main(void) {
     if (vehicle_total == 0)
         printf("Skipping Over Vehicle Calculation.");
 
-// Input for FlightsW
+// Input for Flights
 
     printf("\nDid You Take Any Flights In the Past 12 Months? (y/n): ");
-    scanf("%c", &flights_y_n);
+    scanf(" %c", &flights_y_n);
 
     if (yes_no(flights_y_n) == 1) {
         printf("\nEnter Hours of Flights Taken: ");
@@ -142,7 +143,7 @@ int main(void) {
 
     double avg_emission = 3991.6129; 
     float transporation_value = TransportEnergy(vehicle_total, flights), diet_value = Foodemission(organic_food_percentage, inorganic_food_percentage, locally_produced_food), resource_value = HouseholdEmission(total_electricity_units, total_gas_units);    
-    float CarbonValue = transporation_value + diet_value + resource_value ;
+    float CarbonValue = transporation_value + diet_value + resource_value;
 
     printf("SUMMARY:\n");
 
@@ -160,7 +161,7 @@ int main(void) {
 
 // Total amount of carbon produced 
 
-    printf("The Total Value of Carbon Emitted: %0.2f KG\n",CarbonValue);                           
+    printf("The Total Value of Carbon Emitted: %0.2f KG\n", CarbonValue);                           
 
     index1(recommendations, suggestion, CarbonValue , avg_emission, transporation_value , diet_value, resource_value);
 
@@ -203,13 +204,13 @@ int main(void) {
     axel->h[1] = 200;
 
     struct theme_data* theme = malloc(sizeof(struct theme_data));
-    theme->stop.r = 34;     
-    theme->stop.g = 139;    
-    theme->stop.b = 34;     
+    theme->stop.r = 65;
+    theme->stop.g = 130;
+    theme->stop.b = 234;
 
-    theme->start.r = 139;   
-    theme->start.g = 69;    
-    theme->start.b = 19;    
+    theme->start.r = 234;
+    theme->start.g = 99;
+    theme->start.b = 175;   
 
     theme->theme_type = 0;
     
@@ -220,12 +221,12 @@ int main(void) {
     gp->axel_data = axel;
     general->file_name = malloc(sizeof(char) * 30);
 
-// Plotting Graph
+// Plotting Pie Chart
 
     struct pie_data* pd = malloc(sizeof(struct pie_data));
     free(general->file_name);
     general->file_name = malloc(sizeof(char) * 30);
-    strcpy(general->file_name, "./pie-chart/pie.svg\0");
+    strcpy(general->file_name, "./graphs/pie.svg\0");
     general->margin = 40.0;
     pd->general = general;
     pd->axel_data = axel;
@@ -249,19 +250,66 @@ int main(void) {
 
     free(pd->slices);
     free(pd);
+
+// A graphical report with previous 5 footprints
+
+    int amount = 5;
+    float *previous_totals = (float *)calloc(amount, amount * sizeof(float));
+    int error_check = retrive(previous_totals, &amount);
+
+    if (error_check == 1) {
+        struct bar_data* bd = malloc(sizeof(struct bar_data));
+        free(general->file_name);
+        general->file_name = malloc(sizeof(char) * 30);
+        strcpy(general->file_name, "./graphs/previous.svg\0");
+        bd->general = general;
+        general->margin = 100;
+        bd->theme = theme;
+        bd->axel_data = axel;
+        bd->n_bars = amount;
+        bd->spacing = 5;
+        axel->numbered_x = 0;
+        axel->vertical_lines = 0;
+        bd->bars = malloc(sizeof(struct bar) * bd->n_bars);
+        axel->w[0] = 0;
+        axel->w[1] = 50;
+        axel->h[0] = 0;
+        axel->h[1] = 20000;
+
+        for(int i = 0; i < bd->n_bars; i++) {
+            bd->bars[i].value = previous_totals[i];
+            bd->bars[i].name = malloc(sizeof(char) * amount);
+            strcpy(bd->bars[i].name, "\0");
+        }
+
+        vbar(bd);
+
+        for(int i = 0; i < bd->n_bars; i++){
+            free(bd->bars[i].name);
+        }
+        free(bd->bars);
+        free(bd);
+    }
+
+
+    printf("\nPress Enter to open Graphs...\n");
+    while (getch() != 13);
+
+    CurrentWorkingDirectory(directory);
+    char cmd1[100] ="start chrome ";
+    char cmd2[100] ="start chrome "; 
+    strcat(cmd1, directory);
+    strcat(cmd2, directory);
+    strcat(cmd1, "/graphs/pie.svg\0");
+    strcat(cmd2, "/graphs/previous.svg\0");
+    system(cmd1);
+    system(cmd2);
+
     free(general->file_name);
     free(general);
     free(axel);
     free(theme);
-
-    printf("\nPress Enter to open Graph...\n");
-    while (getch() != 13);
-
-    CurrentWorkingDirectory(directory);
-    char cmd[100] ="start chrome "; 
-    strcat(cmd, directory);
-    strcat(cmd, "/pie-chart/pie.svg\0");
-    system(cmd);
+    free(previous_totals);
 
   return 0;
 }
